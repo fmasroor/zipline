@@ -330,7 +330,6 @@ def initialize(context):
 def handle_data(context, data):
     order(sid(24), 1000)
         """
-
         sim_params = SimulationParameters(
             start_session=pd.Timestamp("2006-01-03", tz='UTC'),
             end_session=pd.Timestamp("2006-01-06", tz='UTC'),
@@ -342,18 +341,11 @@ def handle_data(context, data):
         with self.assertRaises(ZeroCapitalError) as exc:
             # make_algo will trace to TradingAlgorithm,
             # where the exception will be raised
-            algo = self.make_algo(script=algo_text, sim_params=sim_params)
-        # It shouldn't be able to run the algorithm
-            output = algo.run()
-            # If capital base was less than zero, the none of the orders
-            # should have been filled so starting/ending cash should be
-            # equal
-            expected_cash = [cap_base for x in range(4)]
-            self.assertEqual(expected_cash, list(output['ending_cash']))
-            # Make sure the correct error was raised
-            error = exc.exception
-            self.assertEqual(str(error), 'The initial capital base is set \
-                                          to zero (or fewer) dollars')
+            self.make_algo(script=algo_text, sim_params=sim_params)
+        # Make sure the correct error was raised
+        error = exc.exception
+        self.assertEqual(str(error),
+                         'initial capital base must be greater than zero')
 
     def test_get_environment(self):
         expected_env = {
