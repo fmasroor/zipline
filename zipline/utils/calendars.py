@@ -1,3 +1,4 @@
+# flake8: noqa
 # reexport trading_calendars for backwards compat
 from trading_calendars import (
     clear_calendars,

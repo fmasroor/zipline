@@ -10,7 +10,7 @@ import warnings
 import numpy as np
 import pandas as pd
 from distutils.version import StrictVersion
-from trading_calendars.trading_calendar import days_at_time
+from trading_calendars.trading_calendar import days_at_time  # noqa: reexport
 
 pandas_version = StrictVersion(pd.__version__)
 
