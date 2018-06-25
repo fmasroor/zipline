@@ -10,8 +10,8 @@ package:
 
 source:
   fn: '{{ name }}-{{ version }}.{{ file_ext }}'
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
-  '{{ hash_type }}': '{{ hash_value }}'
+  url: https://files.pythonhosted.org/packages/e1/73/447e60e35d533fc0bb5ca3077521bba73ffc4792ac534f309335b389a937/trading_calendars-1.0.0.tar.gz
+
 
 build:
   number: 0
